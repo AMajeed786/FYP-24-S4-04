@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourist Guide Chatbot</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Holly</h1>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-links">
+            <div class="nav-item">Home</div>
+            <div class="nav-item">About Us</div>
+            <div class="nav-item">Tourist Recommendation</div>
+            <div class="nav-item">Join Us</div>
+        </div>
+        <div class="profile">
+            <a href="login.html">
+                <img src="Picture1.svg" alt="login" class="profile-icon">
+            </a>
+        </div>
+    </nav>
+
+    <!-- Slideshow Container -->
+    <div class="slideshow-container">
+        <div class="arrow left" onclick="prevSlide()">&#9664;</div>
+        
+        <div class="slide fade">
+            <img src="img1.jpg" alt="Slide 1">
+        </div>
+        <div class="slide fade">
+            <img src="img2.jpg" alt="Slide 2">
+        </div>
+        <div class="slide fade">
+            <img src="img3.jpg" alt="Slide 3">
+        </div>
+        
+        <div class="arrow right" onclick="nextSlide()">&#9654;</div>
+    </div>
+
+    <!-- Chat Icon -->
+    <div class="chat-icon" onclick="toggleChatbot()">
+        <img src="cb.jpg" alt="Chat">
+    </div>
+
+   <!-- Chatbot Interface -->
+<div class="chatbot-container" id="chatbot">
+    <div class="chatbot-header">
+        <span>Chatbot</span>
+        <button onclick="toggleChatbot()">X</button>
+    </div>
+    <div class="chatbot-body" id="chatbotBody">
+        <div class="chatbot-message">Welcome, how may I assist you today?</div>
+        <div class="chatbot-prompts">
+            <button onclick="handlePrompt('FAQ')">FAQ</button>
+            <button onclick="handlePrompt('Top 10 Dining')">Top 10 Dining</button>
+            <button onclick="handlePrompt('Top 10 Spa')">Top 10 Spa</button>
+            <button onclick="handlePrompt('Location-Based Recommendations')">Location-Based Recommendations</button>
+            <button onclick="handlePrompt('Website Navigation')">Website Navigation</button>
+        </div>
+    </div>
+    <div class="chatbot-input">
+        <input type="text" id="userInput" placeholder="Type your question...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; Copyrights 2024</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

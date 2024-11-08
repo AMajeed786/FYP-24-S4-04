@@ -1,0 +1,220 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Make the body and html take full height */
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid green;
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1d6d8b;
+    padding: 10px;
+}
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+.nav-item {
+    background-color: #cfead1;
+    padding: 15px;
+    border-radius: 5px;
+    color: black;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Profile section */
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background-color: #cfead1;
+    padding: 10px;
+    border-radius: 5px;
+}
+.profile-icon {
+    width: 30px; /* Adjust the icon size as needed */
+    height: 30px;
+    cursor: pointer;
+}
+
+/* Main content area (flexible space) */
+body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Slideshow */
+.slideshow-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    position: relative;
+}
+.slide {
+    display: none;
+    width: 500px;  /* Set the desired width for the slideshow area */
+    height: 300px; /* Set the desired height for the slideshow area */
+    position: relative;
+    border: 2px solid green;
+}
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the entire area without distortion */
+}
+.arrow {
+    font-size: 30px;
+    color: #ff6a00;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+/* Footer always at the bottom */
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #1d6d8b;
+    color: white;
+    font-size: 14px;
+    margin-top: auto; /* Pushes the footer to the bottom of the page */
+}
+
+/* Chat Icon positioned above the footer */
+.chat-icon {
+    position: fixed;
+    bottom: 60px; /* Adjust this value to position it just above the footer */
+    right: 20px;
+    background-color: #1d6d8b;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.chat-icon img {
+    width: 35px;
+    height: 35px;
+}
+/* Chatbot Container */
+.chatbot-container {
+    display: none;
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 300px;
+    max-height: 400px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Chatbot Header */
+.chatbot-header {
+    background-color: #1d6d8b;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+/* Update chatbot body to handle longer lists */
+.chatbot-body {
+    padding: 15px;
+    overflow-y: auto;
+    flex: 1;
+    max-height: 300px; /* Constrain height to prevent overflow */
+}
+
+
+ .chatbot-message {
+    background-color: #e1f5fe;
+    border: 1px solid green;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    max-width: 80%;
+} 
+.chatbot-message ul, .user-message ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.user-message {
+    background-color: #e0f7fa;
+    border: 1px solid blue;
+    padding: 10px;
+    margin: 5px 0;
+    align-self: flex-end;
+    border-radius: 5px;
+    max-width: 80%;
+}
+
+/* Chatbot Prompts (buttons) */
+.chatbot-prompts {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.chatbot-prompts button {
+    background-color: #1d6d8b;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Chatbot Input */
+.chatbot-input {
+    display: flex;
+    border-top: 1px solid #ddd;
+    padding: 10px;
+}
+
+.chatbot-input input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.chatbot-input button {
+    background-color: #1d6d8b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
