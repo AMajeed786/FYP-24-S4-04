@@ -218,3 +218,173 @@ body {
     padding: 8px 12px;
     cursor: pointer;
 }
+
+/* Tourist Recommendation Page */
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Tourist Recommendation Section Styling */
+#tourist-recommendation-section {
+    padding: 40px;
+    background-color: #fdfdfd;
+    border-top: 5px solid #0066cc;
+}
+
+#tourist-recommendation-section h2 {
+    color: #0066cc;
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Recommendation Item Styling */
+.recommendation-item {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px 0;
+    transition: transform 0.3s ease;
+}
+
+.recommendation-item:hover {
+    transform: translateY(-5px);
+}
+
+.recommendation-item h3 {
+    color: #333;
+    margin-top: 0;
+}
+
+.recommendation-item p {
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Optional: Centering the Section */
+#tourist-recommendation-section {
+    max-width: 800px;
+    margin: auto;
+}
+
+/* Button Styling for Navigation (if needed) */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    color: #fff;
+    background-color: #0066cc;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #004a99;
+}
+
+/* About Us Page CSS
+/* General Page Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* About Section */
+.about-section {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #fdfdfd;
+}
+
+.about-section h1 {
+    font-size: 2.5em;
+    color: #0066cc;
+    margin-bottom: 10px;
+}
+
+.about-section p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: auto;
+}
+
+/* Mission Section */
+.mission-section {
+    padding: 40px 20px;
+    background-color: #e9f5ff;
+    text-align: center;
+}
+
+.mission-section h2 {
+    font-size: 2em;
+    color: #0066cc;
+    margin-bottom: 10px;
+}
+
+.mission-section p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: auto;
+}
+
+/* Team Section */
+.team-section {
+    padding: 40px 20px;
+    background-color: #fdfdfd;
+    text-align: center;
+}
+
+.team-section h2 {
+    font-size: 2em;
+    color: #0066cc;
+    margin-bottom: 20px;
+}
+
+.team-member {
+    display: inline-block;
+    margin: 20px;
+    text-align: center;
+}
+
+.team-member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.team-member h3 {
+    font-size: 1.2em;
+    margin: 5px 0;
+}
+
+/* Contact Section */
+.contact-section {
+    padding: 40px 20px;
+    background-color: #e9f5ff;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 2em;
+    color: #0066cc;
+    margin-bottom: 10px;
+}
+
+.contact-section p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
