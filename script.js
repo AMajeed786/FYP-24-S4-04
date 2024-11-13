@@ -137,3 +137,6 @@ function showError(error) {
     chatbotBody.innerHTML = "<p>Location access denied. Unable to provide location-based recommendations.</p>";
 }
 
+function navigateTo(page) {
+    window.location.href = page;
+}
