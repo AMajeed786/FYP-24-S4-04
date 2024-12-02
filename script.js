@@ -29,7 +29,7 @@ function toggleChatbot() {
 }
 
 // Handle prompt button clicks in chatbot
-function handlePrompt(prompt) {
+function handlePrompt1(prompt) {
     const chatbotBody = document.querySelector(".chatbot-body");
     chatbotBody.innerHTML = `<p>You selected: <strong>${prompt}</strong></p><p>Loading information...</p>`;
     
@@ -48,14 +48,9 @@ function handlePrompt(prompt) {
         }
     }, 1000); // Simulated delay
 }
-// Toggle Chatbot visibility
-function toggleChatbot() {
-    const chatbot = document.getElementById("chatbot");
-    chatbot.style.display = chatbot.style.display === "none" || chatbot.style.display === "" ? "block" : "none";
-}
 
 // Handle prompt button clicks
-function handlePrompt(prompt) {
+function handlePrompt2(prompt) {
     const chatbotBody = document.getElementById("chatbotBody");
     const message = document.createElement("div");
     message.className = "chatbot-message";
