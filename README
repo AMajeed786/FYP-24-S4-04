@@ -1,0 +1,73 @@
+
+# Singapore Tourist Chatbot
+
+An intelligent chatbot designed to help tourists plan their perfect vacation in Singapore. 
+The chatbot provides personalized travel recommendations based on user preferences, budget, trip duration, and current mood. 
+It also helps users find nearby attractions, offers itinerary planning, and provides general travel information about Singapore.
+
+
+---
+
+## About
+Key features include:
+- Personalized recommendations based on user preferences.
+- Nearby attraction suggestions using the Foursquare API.
+- General travel information about singapore.
+- Interactive prompts to guide navigation.
+---
+
+## Installation
+
+### Prerequisites
+Ensure that the following software is installed on your local machine:
+- [Python 3.10](https://www.python.org/downloads/)
+- [Node.js](https://nodejs.org/) (if working with Firebase functions)
+- [npm](https://npmjs.com/) (for managing JavaScript packages)
+- Firebase CLI: Install it globally using:
+  ```bash
+  npm install -g firebase-tools
+
+# Steps to set up project
+- Clone the repository: AMajeed786 fyp-24-s4-04
+- Install dependencies: npm install (if you havent done so)
+
+---
+
+### for this project, we will be using firebase for our database and hosting
+
+# Firebase files inside repository
+1. firebase-config.js: *
+- contains your Firebase project's configuration details like the API key, project ID, and other Firebase credentials.
+2. firebase.json: *
+- configuration settings for Firebase Hosting and other Firebase services like Firebase Functions.
+- tells Firebase Hosting how to serve your app, including which files to serve, rewrite rules, redirects, and caching
+3. firebase (folder): * contains the following files 
+-> firestore.rules:
+- define who can read, write, or update documents and collections
+-> database.rules.json:
+- manage read and write access for the Realtime Database
+-> storage.rules:
+- define who can upload, download, and delete files from Firebase Storage
+-> firestore.indexes.json:
+- manage composite indexes in Firebase Firestore
+- indexes are used to make query operations more efficient
+4. .firebaserc: *
+- configuration file used in Firebase projects to specify the project(s) you want to work with
+- managing different Firebase environments and services
+5. package.json: *
+- contains metadata about your project (like its name, version, and description)
+6. package-lock.json:
+- automatically generated when you run npm install
+7. apphosting.yaml:
+8. .gitignore:
+9. remoteconfig.template.json:
+10. node_modules:
+- directory where all the packages are stored after running npm install
+11. dataconnect (folder):
+12. public (folder): index.html file inside
+
+### the ones that are starred are required to run firebase 
+# Firebase has already been initialized for this project, so you do not need to run firebase init.
+
+
+# images for the website have all been shifted to the folder img-folder
