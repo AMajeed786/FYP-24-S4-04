@@ -32,9 +32,10 @@ header {
     gap: 20px;
 }
 .nav-item {
-    background-color: #cfead1;
-    padding: 15px;
-    border-radius: 5px;
+    border: 1px solid #ccc; /* White border */
+    padding: 10px 15px; /* Adjusted padding to match Edit Profile box */
+    background-color: #cfead1; /* Light background color */
+    border-radius: 5px; /* Rounded corners */
     color: black;
     cursor: pointer;
     text-align: center;
@@ -42,19 +43,32 @@ header {
 
 /* Profile section */
 .profile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    background-color: #cfead1;
-    padding: 10px;
-    border-radius: 5px;
+    display: flex; /* Use flexbox to place items side by side */
+    align-items: center; /* Vertically center the items */
+    gap: 20px; /* Add a gap between the Edit Profile box and the login icon */
 }
+
+/* Styling for the "Edit Profile" box */
+.edit-profile .profile-item {
+    border: 1px solid #ccc; /* Border around the Edit Profile box */
+    padding: 10px 15px; /* Padding inside the box */
+    background-color: #f0f0f0; /* Background color of the box */
+    border-radius: 5px; /* Optional: rounded corners */
+    cursor: pointer; /* Indicate it's clickable */
+}
+
+/* Styling for the login icon */
 .profile-icon {
-    width: 30px; /* Adjust the icon size as needed */
+    width: 30px; /* Adjust the icon size */
     height: 30px;
     cursor: pointer;
+    border: 1px solid #ccc; /* Border around the image */
+    padding: 5px; /* Add padding inside the border */
+    border-radius: 5px; /* Rounded corners for the icon border */
+    background-color: #f0f0f0; /* Same background color as the Edit Profile box */
 }
+
+
 
 /* Main content area (flexible space) */
 body {
@@ -419,6 +433,7 @@ body {
     border-radius: 5px;
     box-sizing: border-box;
 }
+
 
 .form-container button {
     width: 100%;
