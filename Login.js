@@ -28,6 +28,7 @@ if (!form) {
     });
 }
 
+
 // Async login function
 async function loginUser(auth, email, password) {
     try {

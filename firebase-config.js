@@ -1,4 +1,3 @@
-
     // Import Firebase modules directly from CDN
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
     import { getAuth } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js";
