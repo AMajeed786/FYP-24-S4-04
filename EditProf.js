@@ -44,24 +44,35 @@ async function initializeForm(user) {
         const newPassword = passwordField.value;
 
         try {
-            // Update email if changed
+            // Check if the email has changed
             if (newEmail && newEmail !== user.email) {
-                await updateEmail(user, newEmail);
-                await updateDoc(doc(db, "users", user.uid), { email: newEmail });
+                // Update email in Firebase Auth
+                await updateEmail(user, newEmail); // Update email in Firebase
+
+                // Send verification email
+                await user.sendEmailVerification();
+                console.log("Verification email sent to:", newEmail);
+
+                // Inform the user that they need to verify the new email
+                alert("A verification email has been sent to your new email. Please verify it before proceeding.");
+
+                // Pause further execution here, as the email verification is required before proceeding.
+                return; // Stop execution until verification is complete
             }
 
-            // Update username in Firestore
+            // Update username in Firestore (this happens only if the email isn't changed)
             if (newUsername) {
                 await updateDoc(doc(db, "users", user.uid), { name: newUsername });
             }
 
-            // Update password if provided
+            // Update password if provided (this happens only if the email isn't changed)
             if (newPassword) {
                 await updatePassword(user, newPassword);
             }
 
             alert("Profile updated successfully!");
             window.location.reload(); // Refresh to reflect changes
+
         } catch (error) {
             console.error("Error updating profile:", error.message);
             alert("Failed to update profile: " + error.message);
