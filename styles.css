@@ -43,9 +43,10 @@ header {
 
 /* Profile section */
 .profile {
-    display: flex; /* Use flexbox to place items side by side */
-    align-items: center; /* Vertically center the items */
-    gap: 20px; /* Add a gap between the Edit Profile box and the login icon */
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Adjust the gap between Edit Profile and Profile Icon */
+    margin-left: auto; /* Push the profile section to the right */
 }
 
 /* Styling for the "Edit Profile" box */
@@ -55,17 +56,19 @@ header {
     background-color: #f0f0f0; /* Background color of the box */
     border-radius: 5px; /* Optional: rounded corners */
     cursor: pointer; /* Indicate it's clickable */
+    margin-right: 20px; /* Add space to the right of Edit Profile */
 }
 
 /* Styling for the login icon */
 .profile-icon {
-    width: 30px; /* Adjust the icon size */
-    height: 30px;
+    width: 40px; /* Adjust the icon size */
+    height: 40px;
     cursor: pointer;
     border: 1px solid #ccc; /* Border around the image */
     padding: 5px; /* Add padding inside the border */
     border-radius: 5px; /* Rounded corners for the icon border */
     background-color: #f0f0f0; /* Same background color as the Edit Profile box */
+
 }
 
 

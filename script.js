@@ -135,3 +135,10 @@ function showError(error) {
 function navigateTo(page) {
     window.location.href = page;
 }
+
+
+
+
+
+
+
