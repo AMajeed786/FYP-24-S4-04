@@ -41,6 +41,11 @@ header {
     text-align: center;
 }
 
+/* Default state: hide Join Us button */
+#joinUsButton {
+    display: none;
+  }
+  
 /* Profile section */
 .profile {
     display: flex;

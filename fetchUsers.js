@@ -1,18 +1,24 @@
 // Import Firestore and Firebase app from firebase-config.js
 import { db } from "./firebase-config.js"; // Assuming firebase-config.js is in the same directory
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
+import {
+  collection,
+  getDocs,
+  doc,
+  updateDoc,
+} from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
 
 // Function to fetch and display users
 async function fetchUsers() {
   try {
-    const usersCollection = collection(db, "users"); // Replace "users" with your Firestore collection name
-    const snapshot = await getDocs(usersCollection);
+    const usersCollection = collection(db, "users"); // Reference the Firestore 'users' collection
+    const snapshot = await getDocs(usersCollection); // Fetch all documents in the collection
 
     // Get reference to the HTML table body
     const userList = document.getElementById("user-list");
 
-    snapshot.forEach((doc) => {
-      const user = doc.data();
+    snapshot.forEach((docSnap) => {
+      const user = docSnap.data(); // Get document data
+      const docId = docSnap.id; // Get the document ID
 
       // Format createdAt timestamp
       const createdAt = user.createdAt
@@ -29,7 +35,7 @@ async function fetchUsers() {
         <td>${user.name || "N/A"}</td>
         <td>${user.role || "N/A"}</td>
         <td><button class="change-password-btn">Change Password</button></td>
-        <td><button class="disable-account-btn">Disable Account</button></td>
+        <td><button class="toggle-account-btn">${user.isActive ? "Disable Account" : "Activate Account"}</button></td>
       `;
 
       // Append the row to the table body
@@ -37,14 +43,28 @@ async function fetchUsers() {
 
       // Event listener for 'Change Password' button
       row.querySelector(".change-password-btn").addEventListener("click", () => {
-        // Functionality for changing password (to be implemented)
         alert(`Change password for ${user.email}`);
       });
 
-      // Event listener for 'Disable Account' button
-      row.querySelector(".disable-account-btn").addEventListener("click", () => {
-        // Functionality for disabling account (to be implemented)
-        alert(`Disable account for ${user.email}`);
+      // Event listener for 'Disable/Activate Account' button
+      const toggleButton = row.querySelector(".toggle-account-btn");
+      toggleButton.addEventListener("click", async () => {
+        const action = user.isActive ? "disable" : "activate";
+        if (confirm(`Are you sure you want to ${action} the account for ${user.email}?`)) {
+          try {
+            // Update Firestore to toggle the `isActive` field
+            const userDoc = doc(db, "users", docId);
+            await updateDoc(userDoc, { isActive: !user.isActive });
+
+            // Update the UI
+            toggleButton.textContent = user.isActive ? "Activate Account" : "Disable Account";
+            user.isActive = !user.isActive; // Update the local state
+            alert(`Account ${action}d successfully.`);
+          } catch (error) {
+            console.error(`Error ${action}ing account:`, error.message);
+            alert(`Failed to ${action} account. See console for details.`);
+          }
+        }
       });
     });
   } catch (error) {

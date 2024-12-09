@@ -4,25 +4,39 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Dashboard</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="adminstyles.css"> <!-- Link to CSS -->
 </head>
 <body>
-  <h1>Registered Users</h1>
-  <table border="1">
-    <thead>
-      <tr>
-        <th>Created At</th>
-        <th>Email</th>
-        <th>Name</th>
-        <th>Role</th>
-        <!-- Removed Actions column -->
-      </tr>
-    </thead>
-    <tbody id="user-list"></tbody>
-  </table>
+  <!-- Navigation Bar -->
+  <nav class="dashboardBar">
+    <div class="login">
+      <a class="login-button" id="loginLink" href="Login.html">
+        <img src="img-folder/Picture1.svg" alt="Login" class="profile-icon">
+      </a>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="content">
+    <h1>Registered Users</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Created At</th>
+          <th>Email</th>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Change Password</th>
+          <th>Account Status</th>
+        </tr>
+      </thead>
+      <tbody id="user-list"></tbody>
+    </table>
+  </div>
 
   <!-- Include Firebase and custom JS files -->
-  <script type="module" src="firebase-config.js"></script>
-  <script type="module" src="fetchUsers.js"></script>
+  <script type="module" src="firebase-config.js" defer></script>
+  <script type="module" src="fetchUsers.js" defer></script>
+  <script type="module" src="./Login.js" defer></script>
 </body>
 </html>

@@ -1,41 +1,74 @@
-/* General Table Styling */
+/* General Reset */
+body, h1, table {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Page Background */
+body {
+  background-color: #f4f4f9;
+  padding: 20px;
+}
+
+/* Navigation Bar */
+.dashboardBar {
+  background-color: #733fd3;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: flex-end; /* Align items to the right */
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-button {
+  text-decoration: none;
+}
+
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid white;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.profile-icon:hover {
+  transform: scale(1.1);
+  border-color: #ffdd57;
+}
+
+/* Page Title */
+h1 {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 2rem;
+  color: #333;
+}
+
+/* Table Styling */
 table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  th, td {
-    padding: 10px;
-    text-align: left;
-  }
-  
-  th {
-    background-color: #f2f2f2;
-    color: #333;
-  }
-  
-  /* Remove borders from the table */
-  table, th, td {
-    border: none;
-  }
-  
-  /* Button styling */
-  button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }
-  
-  button:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
-  }
-  
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+/* Table Headers */
+th {
+  background-color: #6451cc;
+  color: white;
+  padding: 10px;
+  text-align: left;
+  font-size: 1rem;
+}
+
+/* Table Rows */
+td {
+  padding: 10px;
+  border-bottom: 1px solid
