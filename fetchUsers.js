@@ -6,6 +6,7 @@ import {
   doc,
   updateDoc,
 } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore.js";
+import { getAuth, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-auth.js"; // Import Firebase Auth
 
 // Function to fetch and display users
 async function fetchUsers() {
@@ -30,20 +31,24 @@ async function fetchUsers() {
 
       // Add user data to the row
       row.innerHTML = `
-        <td>${createdAt}</td>
-        <td>${user.email || "N/A"}</td>
-        <td>${user.name || "N/A"}</td>
-        <td>${user.role || "N/A"}</td>
-        <td><button class="change-password-btn">Change Password</button></td>
-        <td><button class="toggle-account-btn">${user.isActive ? "Disable Account" : "Activate Account"}</button></td>
-      `;
+      <td>${createdAt}</td>
+      <td>${user.email || "N/A"}</td>
+      <td>${user.name || "N/A"}</td>
+      <td>${user.role || "N/A"}</td>
+      <td>
+        <button class="change-password-btn">Change Password</button>
+      </td>
+      <td>
+        <button class="toggle-account-btn">${user.isActive ? "Disable Account" : "Activate Account"}</button>
+      </td>
+    `;
 
       // Append the row to the table body
       userList.appendChild(row);
 
       // Event listener for 'Change Password' button
       row.querySelector(".change-password-btn").addEventListener("click", () => {
-        alert(`Change password for ${user.email}`);
+        sendPasswordReset(user.email);
       });
 
       // Event listener for 'Disable/Activate Account' button
@@ -70,6 +75,20 @@ async function fetchUsers() {
   } catch (error) {
     console.error("Error fetching users:", error);
   }
+}
+
+// Function to send password reset email
+function sendPasswordReset(email) {
+  const auth = getAuth();
+
+  sendPasswordResetEmail(auth, email)
+    .then(() => {
+      alert(`Password reset email sent to ${email}.`);
+    })
+    .catch((error) => {
+      console.error("Error sending password reset email:", error.message);
+      alert("Failed to send password reset email. Please check the email address.");
+    });
 }
 
 // Call fetchUsers when the script loads
