@@ -1,0 +1,495 @@
+/* Reset some default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Make the body and html take full height */
+html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+header {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid green;
+}
+
+/* Navigation Bar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1d6d8b;
+  padding: 10px;
+}
+.nav-links {
+  display: flex;
+  gap: 20px;
+  
+}
+.nav-item {
+  background-color: #cfead1;
+  padding: 15px;
+  border-radius: 5px;
+  color: black;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* Profile section */
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background-color: #cfead1;
+  padding: 10px;
+  border-radius: 5px;
+}
+.profile-icon {
+  width: 30px; /* Adjust the icon size as needed */
+  height: 30px;
+  cursor: pointer;
+}
+
+/* Main content area (flexible space) */
+body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Slideshow */
+.slideshow-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  position: relative;
+}
+.slide {
+  display: none;
+  width: 500px;  /* Set the desired width for the slideshow area */
+  height: 500px; /* Set the desired height for the slideshow area */
+  position: relative;
+overflow: hidden;
+}
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures image covers the entire area without distortion */
+}
+.arrow {
+  font-size: 30px;
+  color: #ff6a00;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+/* Footer always at the bottom */
+.footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #1d6d8b;
+  color: white;
+  font-size: 14px;
+  margin-top: auto; 
+}
+
+
+.chat-icon {
+  position: fixed;
+  bottom: 60px; /* Adjust this value to position it just above the footer */
+  right: 20px;
+  background-color: #1d6d8b;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.chat-icon img {
+  width: 35px;
+  height: 35px;
+}
+/* Chatbot Container */
+.chatbot-container {
+  display: none;
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 300px;
+  max-height: 400px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Chatbot Header */
+.chatbot-header {
+  background-color: #1d6d8b;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+}
+
+/* Update chatbot body to handle longer lists */
+.chatbot-body {
+  padding: 15px;
+  overflow-y: auto;
+  flex: 1;
+  max-height: 300px; /* Constrain height to prevent overflow */
+}
+
+
+.chatbot-message {
+  background-color: #e1f5fe;
+  border: 1px solid green;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  max-width: 80%;
+} 
+.chatbot-message ul, .user-message ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.user-message {
+  background-color: #e0f7fa;
+  border: 1px solid blue;
+  padding: 10px;
+  margin: 5px 0;
+  align-self: flex-end;
+  border-radius: 5px;
+  max-width: 80%;
+}
+
+/* Chatbot Prompts (buttons) */
+.chatbot-prompts {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.chatbot-prompts button {
+  background-color: #1d6d8b;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* Chatbot Input */
+.chatbot-input {
+  display: flex;
+  border-top: 1px solid #ddd;
+  padding: 10px;
+}
+
+.chatbot-input input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+.chatbot-input button {
+  background-color: #1d6d8b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+/* Tourist Recommendation Page */
+/* General Styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* Tourist Recommendation Section Styling */
+#tourist-recommendation-section {
+  padding: 40px;
+  background-color: #fdfdfd;
+  border-top: 5px solid #0066cc;
+}
+
+#tourist-recommendation-section h2 {
+  color: #0066cc;
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Recommendation Item Styling */
+.recommendation-item {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px 0;
+  transition: transform 0.3s ease;
+}
+
+.recommendation-item:hover {
+  transform: translateY(-5px);
+}
+
+.recommendation-item h3 {
+  color: #333;
+  margin-top: 0;
+}
+
+.recommendation-item p {
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Optional: Centering the Section */
+#tourist-recommendation-section {
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Button Styling for Navigation (if needed) */
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 20px;
+  color: #fff;
+  background-color: #0066cc;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #004a99;
+}
+
+/* About Us Page CSS
+/* General Page Styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+/* About Section */
+.about-section {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #fdfdfd;
+}
+
+.about-section h1 {
+  font-size: 2.5em;
+  color: #0066cc;
+  margin-bottom: 10px;
+}
+
+.about-section p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: auto;
+}
+
+/* Mission Section */
+.mission-section {
+  padding: 40px 20px;
+  background-color: #e9f5ff;
+  text-align: center;
+}
+
+.mission-section h2 {
+  font-size: 2em;
+  color: #0066cc;
+  margin-bottom: 10px;
+}
+
+.mission-section p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: auto;
+}
+
+/* Team Section */
+.team-section {
+  padding: 40px 20px;
+  background-color: #fdfdfd;
+  text-align: center;
+}
+
+.team-section h2 {
+  font-size: 2em;
+  color: #0066cc;
+  margin-bottom: 20px;
+}
+
+.team-member {
+  display: inline-block;
+  margin: 20px;
+  text-align: center;
+}
+
+.team-member img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.team-member h3 {
+  font-size: 1.2em;
+  margin: 5px 0;
+}
+
+/* Contact Section */
+.contact-section {
+  padding: 40px 20px;
+  background-color: #e9f5ff;
+  text-align: center;
+}
+
+.contact-section h2 {
+  font-size: 2em;
+  color: #0066cc;
+  margin-bottom: 10px;
+}
+
+.contact-section p {
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+
+/* Form Container */
+.form-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+}
+
+.form-container label {
+  display: block;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="password"],
+.form-container input[type="file"] {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.form-container button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #1d6d8b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.form-container p {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.form-container a {
+  color: #1d6d8b;
+  text-decoration: none;
+}
+.dropdown{
+  border: '2px solid #007BFF';   
+  border-radius: '5px';         
+  padding: '8px';                  /* Padding inside the select box */
+  outline: 'none';                 /* Removes default outline */
+  font-size: '16px';                /* Increase font size */
+  background-color: '#f8f9fa';      /* Light background color */
+  transition: 'all 0.3s ease';      /* Smooth transition on focus */
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.planner-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+}
+
+.planner-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.planner-btn:hover {
+  background-color: #45a049;
+}
