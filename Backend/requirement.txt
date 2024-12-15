@@ -1,0 +1,56 @@
+"fastapi[standard]"
+firebase-admin
+fastapi
+uvicorn
+
+uvicorn app:app --host 0.0.0.0 --port 80
+
+fastapi run app.py
+
+uvicorn app:app --host 0.0.0.0 --port 8000 --proxy-headers
+http://192.168.1.15:8000/
+
+
+. What is your preferred activity during travel?
+
+A. Exploring historical sites
+B. Visiting shopping malls
+C. Enjoying nature and parks
+D. Trying new food experiences
+
+2. What describes your travel style the best?
+
+A. Relaxed and leisurely
+B. Adventurous and active
+C. Luxurious and high-end
+D. Budget-conscious
+
+3. Which cuisine are you most excited to try in Singapore?
+
+A. Chinese
+B. Malay
+C. Indian
+D. International fusion
+
+4.What type of attractions do you enjoy the most?
+
+A. Cultural landmarks (temples, museums)
+B. Modern architecture (skyscrapers, futuristic buildings)
+C. Nature spots (gardens, parks)
+D. Theme parks and entertainment hubs
+
+5.Are you traveling with anyone?
+
+A. Solo
+B. With family
+C. With friends
+D. As a couple
+
+6.What is most important to you during your trip?
+
+A. Exploring local culture
+B. Relaxing and unwinding
+C. Thrilling adventures
+D. Creating memorable experiences
+
+Restaurant, Cafe, Tourist Destination, Shopping-malls,Theathers, Hotels, Spa, Emergency-Service, outdoor(park)
