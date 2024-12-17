@@ -20,23 +20,21 @@ from sklearn.model_selection import train_test_split
 from keras.models import Sequential
 from keras.layers import Embedding,Flatten,Dense
 from fastapi.middleware.cors import CORSMiddleware
-genai.configure(api_key="AIzaSyCGe_KIgS-Mb3ZOXQzeLJusfCtJMCHjoao")
-import requests
-preferable_places = ["resturant", "cafe", "tourist destination", "shopping malls","theathers", "hotels", "spa", "emergency service", "outdoor(park)"]
 
-
-myapi ="fsq31Xao86Sk9UoGcO10uO3RnU/4/3KbBZEBsBE+g0T/zYk="
-url = "https://api.foursquare.com/v3/places/search"
-headers = {
-    "Accept": "application/json",
-    "Authorization": myapi
-}
+#added new import
+from pydantic import BaseModel
 
 
 
 
-cred = credentials.Certificate("tourism-89192-firebase-adminsdk-7cynn-d73dee9e5c.json")
-firebase_app = firebase_admin.initialize_app(cred)
+try:
+    print("Initializing Firebase...")
+    cred = credentials.Certificate("firebase_cred.json")
+    firebase_app = firebase_admin.initialize_app(cred)
+    print("Firebase initialized successfully!")
+except Exception as e:
+    print(f"Error initializing Firebase: {e}")
+
 
 
 app = FastAPI()
@@ -57,15 +55,32 @@ def read_root():
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error: {str(e)}")
 
-
+# create user and validation whether email/username is validated
 @app.post("/users/", status_code=201) 
 async def create_user(user: User):
+    """
+    Create a new user after checking for duplicate email and username.
+    """
     try:
-        
+        # Check for duplicate email
+        if user_service.already_user_exists(email=user.email):
+            raise HTTPException(status_code=409, detail="This email is already registered!")
+
+        # Check for duplicate username
+        if user_service.already_user_exists(username=user.username):
+            raise HTTPException(status_code=409, detail="This username is already taken!")
+
+        # If no duplicates found, create the user
         created_user = user_service.add_user(user)
-        return created_user  
+        return {"message": "User registered successfully!", "user_id": created_user["user_id"]}
+    
+    except HTTPException as http_exc:
+        # Reraise HTTP-specific exceptions
+        raise http_exc
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        # Catch other errors
+        raise HTTPException(status_code=500, detail=f"Error registering user: {str(e)}")
+
 
 
 @app.post("/preference/", status_code=201) 
@@ -103,14 +118,7 @@ async def remove_user(user_id: str):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-
-@app.get("/preferences/{user_id}", status_code=200)  
-async def isExist(user_id: str):
-    try:
-        success = user_service.already_id_exist(user_id)
-        return {"exists": success}  
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    
     
 def get_allinfo(latitude,longitude,query):
     radius = 2500  

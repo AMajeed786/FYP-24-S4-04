@@ -3,17 +3,26 @@ import { BASE_URL } from '../service/config';
 import { User } from '../model/User';
 import { Authorise } from '../model/Authorise';
 import { Preference } from '../model/preference';
+import { ErrorResponse } from '../model/ErrorResponse';
+
 
 export const userController = {
-  async createUser(user: User): Promise<AxiosResponse<User>> {
+  async createUser(user: User): Promise<AxiosResponse<User | ErrorResponse>> {
     try {
       const response = await axios.post<User>(`${BASE_URL}/users/`, user);
       return response;  
-    } catch (error) {
-      console.error('Error creating user:', error);
-      throw error;
+    } catch (error: any) {
+      // Explicitly handle and rethrow errors
+      if (axios.isAxiosError(error) && error.response) {
+        const errorResponse = error.response.data as ErrorResponse; // Type assertion
+        throw errorResponse; // Rethrow for frontend handling
+      } else {
+        console.error('Unexpected error:', error);
+        throw new Error('An unexpected error occurred.');
+      }
     }
   },
+
   async addprefernce(user: Preference): Promise<AxiosResponse<Preference>> {
     try {
       const response = await axios.post<Preference>(`${BASE_URL}/preference/`, user);
@@ -21,18 +30,6 @@ export const userController = {
     } catch (error) {
       console.error('Error creating user:', error);
       throw error;
-    }
-  },
-
-
-
-  async checkUserExists(userId: string): Promise<{ exists: boolean }> {
-    try {
-      const response: AxiosResponse<{ exists: boolean }> = await axios.get(`${BASE_URL}/preferences/${userId}`);
-      return response.data;  
-    } catch (error) {
-      console.error('Error checking user existence:', error);
-      throw error;  
     }
   },
 

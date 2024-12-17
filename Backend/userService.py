@@ -23,25 +23,36 @@ class UserService:
         self.db.collection("users").document(user_id).delete()
         return {"message": f"User with ID {user_id} deleted successfully"}
 
-    def already_id_exist(self, userid: str) -> bool:
+    # edited this function, it is pointless to check for userID as all new users are generated with a new userID
+    def already_user_exists(self, email: str = None, username: str = None) -> bool:
         try:
-            print(f"Checking for userId: {userid}")
-            
-            
-            user_data_ref = self.db.collection("perference").where("userId", "==", userid).get()
-            
-           
-            print(f"Query result: {user_data_ref}")
-            
-           
-            if len(user_data_ref) > 0:
-                return True
+            users_ref = self.db.collection("users")
+
+            # Build query conditionally
+            if email:
+                print(f"Checking for email: {email}")
+                query = users_ref.where("email", "==", email)
+            elif username:
+                print(f"Checking for username: {username}")
+                query = users_ref.where("username", "==", username)
             else:
-                return False
+                raise ValueError("Either email or username must be provided to check existence.")
+
+            # Execute the query and fetch results
+            docs = query.stream()
+            results = [doc.id for doc in docs]  # Get matching document IDs for debugging
+
+            print(f"Matching Documents: {results}")  # Debug print
+
+            # Return True if any matching documents are found
+            return len(results) > 0
+
         except Exception as e:
-           
             print(f"Error checking user existence: {e}")
-            return False 
+            return False
+
+
+
 
     def add_preference(self, perfernce: Preference):
        
