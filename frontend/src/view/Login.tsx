@@ -1,33 +1,36 @@
 import React, { useState } from 'react';
 import Header from '../component/header';
-import { Authorise } from '../model/Authorise';
 import { userController } from '../controller/userController';
 import { useNavigate } from 'react-router-dom';
+import { Authorise } from '../model/Authorise';  // Import Authorise model
+
 
 const Login: React.FC = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState<string | null>(null);
     const navigate = useNavigate();
 
+    
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
-  
-        const user: Authorise = {
-            email,
-            password,
-        };
+
+        // Step 1: Create a user object of type Authorise
+        const user: Authorise = { email, password };
 
         try {
-            const response = await userController.authenticateUser(user);
-            const userId = response.data.user_id; 
-            console.log(response.data.userId);
+            // Step 2: Pass the user object to the controller for authentication
+            const userUID = await userController.authenticateUser(user); // Pass the user object
 
-           
-            sessionStorage.setItem('userId', userId);
+            // Step 3: Send the idToken to the backend for verification
+            const response = await userController.sendTokenToBackend(userUID);
 
+            // Step 4: Store the userId and navigate
+            sessionStorage.setItem('userId', response.data.user_id);
             navigate('/dashboard');
         } catch (error) {
-            console.error(error);
+            setError('Failed to log in. Please check your credentials and try again.');
+            console.error('Login error', error);
         }
     };
 

@@ -1,2 +1,5 @@
 Backend/firebase_cred.json
 Backend/tourism-89192-firebase-adminsdk-7cynn-d73dee9e5c.json
+myenv
+node_modules
+firebaseConfig.ts

@@ -18,9 +18,9 @@ class ChatbotRequest(BaseModel):
     mode:str
     
 
+# Model to handle incoming ID token
 class Authorised(BaseModel):
-    email: str
-    password: str
+    idToken: str  # Expecting the ID token in the request
 
 
 class Preference(BaseModel):

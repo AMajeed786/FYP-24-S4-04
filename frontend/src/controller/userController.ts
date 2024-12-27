@@ -4,6 +4,8 @@ import { User } from '../model/User';
 import { Authorise } from '../model/Authorise';
 import { Preference } from '../model/preference';
 import { ErrorResponse } from '../model/ErrorResponse';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+
 
 
 export const userController = {
@@ -53,13 +55,32 @@ export const userController = {
     }
   },
 
-  async authenticateUser(authorised:Authorise): Promise<AxiosResponse<any>> {
+  // Authenticate the user using Firebase Authentication
+  async authenticateUser(user: Authorise): Promise<string> {  // Use Authorise type here
+    const auth = getAuth();
     try {
-      const response = await axios.post<Authorise>(`${BASE_URL}/authentication/`, authorised);
-      return response;
+        // Sign in with Firebase using email and password
+        const userCredential = await signInWithEmailAndPassword(auth, user.email, user.password);
+
+        // Retrieve the Firebase ID Token for the authenticated user
+        const idToken = await userCredential.user.getIdToken();
+        return idToken;  // Return the ID Token
     } catch (error) {
-      console.error('Error during authentication:', error);
-      throw error;
+        console.error('Firebase Authentication Error:', error);
+        throw new Error('Authentication failed');
     }
+},
+
+  // Send the ID Token to the backend for verification
+  async sendTokenToBackend(idToken: string): Promise<AxiosResponse> {
+      try {
+          // Use axios to send the token to the backend
+          const response = await axios.post(`${BASE_URL}/authentication`, { idToken });
+          return response;  // Return the backend response
+      } catch (error) {
+          console.error('Backend Authentication Error:', error);
+          throw new Error('Backend verification failed');
+      }
   }
+
 };

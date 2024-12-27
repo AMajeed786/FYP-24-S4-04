@@ -83,24 +83,6 @@ const Dashboard: React.FC = () => {
     if (storedUserId) {
       setUserId(storedUserId);
     }
-    const checkUserExists = async () => {
-      if (userId) {
-        try {
-          const res = await userController.checkUserExists(userId);
-          setIsUserChecked(res.exists)
-          console.log(res); 
-          if (res.exists) {
-            setIsModalOpen(false);
-          } else {
-            setIsModalOpen(true);
-          }
-  
-        } catch (error) {
-          console.error("Error checking user:", error);
-        }
-      }
-    };
-    checkUserExists()
 
     
   

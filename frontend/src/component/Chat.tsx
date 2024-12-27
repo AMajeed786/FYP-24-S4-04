@@ -109,11 +109,11 @@ const Chat: React.FC = () => {
           color: '#fff',
           border: 'none',
           borderRadius: '50%',
-          width: '60px',
-          height: '60px',
+          width: '60px', // Set icon size to 60px
+          height: '60px', // Set icon size to 60px
           fontSize: '24px',
           cursor: 'pointer',
-          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+          boxShadow: '0 6px 12px rgba(0, 0, 0, 0.3)',
         }}
         aria-label="Chat"
       >
@@ -124,13 +124,14 @@ const Chat: React.FC = () => {
         <div
           style={{
             position: 'absolute',
-            bottom: '80px',
+            bottom: '90px',
             right: '0',
-            width: '300px',
+            width: '400px', // Increase width of the chatbot
+            height: '500px', // Increase height of the chatbot
             background: '#fff',
             border: '1px solid #ddd',
             borderRadius: '8px',
-            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+            boxShadow: '0 6px 12px rgba(0, 0, 0, 0.2)',
             display: 'flex',
             flexDirection: 'column',
           }}
@@ -166,9 +167,10 @@ const Chat: React.FC = () => {
           <div
             style={{
               flex: '1',
-              padding: '10px',
+              padding: '15px',
               overflowY: 'auto',
-              maxHeight: '200px',
+              maxHeight: '350px',
+              background: '#34495e', // Dark background for the chat body
             }}
           >
             {messages.length > 0 ? (
@@ -176,12 +178,15 @@ const Chat: React.FC = () => {
                 <div
                   key={index}
                   style={{
-                    marginBottom: '5px',
-                    padding: '5px',
+                    marginBottom: '10px',
+                    padding: '12px',
                     background: message.sender === 'user' ? '#f1f1f1' : '#007BFF',
                     color: message.sender === 'user' ? '#000' : '#fff',
-                    borderRadius: '4px',
-                    textAlign: message.sender === 'user' ? 'left' : 'right',
+                    borderRadius: '8px',
+                    textAlign: message.sender === 'user' ? 'left' : 'left', // Left align text for both user and bot
+                    maxWidth: '85%',
+                    marginLeft: message.sender === 'user' ? '0' : 'auto', // Bot message aligned to the right
+                    marginRight: message.sender === 'bot' ? '0' : 'auto', // Bot message aligned to the right
                   }}
                 >
                   {message.text}
@@ -200,17 +205,18 @@ const Chat: React.FC = () => {
           </div>
 
           {isOpen && welcomeMessageSent && (
-            <div style={{ padding: '10px', borderTop: '1px solid #ddd' }}>
+            <>
               <button
                 onClick={() => handleButtonClick("location")}
                 style={{
                   backgroundColor: '#f1f1f1',
                   border: 'none',
-                  padding: '10px',
+                  padding: '12px',
                   width: '100%',
-                  marginBottom: '5px',
+                  marginBottom: '10px',
                   cursor: 'pointer',
                   borderRadius: '4px',
+                  textAlign: 'left', // Align the button text to the left
                 }}
               >
                 Location Recommendation
@@ -220,15 +226,16 @@ const Chat: React.FC = () => {
                 style={{
                   backgroundColor: '#f1f1f1',
                   border: 'none',
-                  padding: '10px',
+                  padding: '12px',
                   width: '100%',
                   cursor: 'pointer',
                   borderRadius: '4px',
+                  textAlign: 'left', // Align the button text to the left
                 }}
               >
                 Mood Recommendation
               </button>
-            </div>
+            </>
           )}
 
           <div style={{ display: 'flex', borderTop: '1px solid #ddd' }}>
@@ -239,16 +246,17 @@ const Chat: React.FC = () => {
               onChange={(e) => setNewMessage(e.target.value)}
               style={{
                 flex: '1',
-                padding: '10px',
+                padding: '12px',
                 border: 'none',
                 outline: 'none',
                 borderRadius: '0 0 0 8px',
+                textAlign: 'left', // Ensures input text is aligned left
               }}
             />
             <button
               onClick={sendMessage}
               style={{
-                padding: '10px',
+                padding: '12px',
                 background: '#007BFF',
                 color: '#fff',
                 border: 'none',
@@ -264,5 +272,7 @@ const Chat: React.FC = () => {
     </div>
   );
 };
+
+
 
 export default Chat;

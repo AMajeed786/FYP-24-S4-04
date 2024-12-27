@@ -34,7 +34,7 @@ try:
     print("Firebase initialized successfully!")
 except Exception as e:
     print(f"Error initializing Firebase: {e}")
-
+    
 
 
 app = FastAPI()
@@ -56,31 +56,36 @@ def read_root():
         raise HTTPException(status_code=500, detail=f"Error: {str(e)}")
 
 # create user and validation whether email/username is validated
-@app.post("/users/", status_code=201) 
+@app.post("/users/", status_code=201)
 async def create_user(user: User):
     """
     Create a new user after checking for duplicate email and username.
     """
     try:
-        # Check for duplicate email
-        if user_service.already_user_exists(email=user.email):
-            raise HTTPException(status_code=409, detail="This email is already registered!")
+        # Check if email is already registered in Firebase
+        try:
+            firebase_user = auth.get_user_by_email(user.email)
+            if firebase_user:
+                raise HTTPException(status_code=409, detail="This email is already registered!")
+        except firebase_admin.exceptions.NotFoundError:
+            pass  # Email is not registered, proceed to create user
 
-        # Check for duplicate username
-        if user_service.already_user_exists(username=user.username):
-            raise HTTPException(status_code=409, detail="This username is already taken!")
+        # Create user in Firebase
+        firebase_user = auth.create_user(
+            email=user.email,
+            password=user.password,
+            display_name=user.username,
+        )
 
-        # If no duplicates found, create the user
-        created_user = user_service.add_user(user)
-        return {"message": "User registered successfully!", "user_id": created_user["user_id"]}
-    
+
+        return {"message": "User registered successfully!", "user_id": firebase_user.uid}
+
     except HTTPException as http_exc:
         # Reraise HTTP-specific exceptions
         raise http_exc
     except Exception as e:
         # Catch other errors
         raise HTTPException(status_code=500, detail=f"Error registering user: {str(e)}")
-
 
 
 @app.post("/preference/", status_code=201) 
